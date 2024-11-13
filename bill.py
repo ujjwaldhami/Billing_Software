@@ -33,7 +33,7 @@ class Bill_App:
         F1.place(x=0,y=80,relwidth=1)
 
         cname_label= Label(F1,text="Customer Name",bg=bg_color,fg="white",font=("times new roman",18,"bold")).grid(row=0,column=0,padx=20,pady=5)
-        cname_txt = Entry(F1,width=15,textvariable=self.c_name,font="arial 15",bd=7,relief=SUNKEN).grid(row=0,column=1,padx=10,pady=5)
+        cname_txt = Entry(F1,width=15,textvariable=self.cname,font="arial 15",bd=7,relief=SUNKEN).grid(row=0,column=1,padx=10,pady=5)
 
         cphone_label= Label(F1,text="Phone Number",bg=bg_color,fg="white",font=("times new roman",18,"bold")).grid(row=0,column=2,padx=20,pady=5)
         cphone_txt = Entry(F1,width=15,textvariable=self.cphone,font="arial 15",bd=7,relief=SUNKEN).grid(row=0,column=3,padx=10,pady=5)

@@ -29,14 +29,30 @@ class Bill_App:
         self.lassi = IntVar()
         self.juice = IntVar()
 
+
+        #=============Total Product price & tax Variable=========#
+        self.cosmetic_price=StringVar()
+        self.grocery_price=StringVar()
+        self.cold_drink_price=StringVar()
+
+        self.cosmetic_tax=StringVar()
+        self.grocery_tax=StringVar()
+        self.cold_drink_tax=StringVar()
+
+        #============Customer==========#
+        self.c_name=StringVar()
+        self.c_phon=StringVar()
+        self.bill_no=StringVar()
+        self.search_bill=StringVar()
+
         F1= LabelFrame(self.root, bd=10,relief=GROOVE,text="Customer Details", font=("times new roman",15,"bold"),fg="gold",bg=bg_color)
         F1.place(x=0,y=80,relwidth=1)
 
         cname_label= Label(F1,text="Customer Name",bg=bg_color,fg="white",font=("times new roman",18,"bold")).grid(row=0,column=0,padx=20,pady=5)
-        cname_txt = Entry(F1,width=15,textvariable=self.cname,font="arial 15",bd=7,relief=SUNKEN).grid(row=0,column=1,padx=10,pady=5)
+        cname_txt = Entry(F1,width=15,textvariable=self.c_name,font="arial 15",bd=7,relief=SUNKEN).grid(row=0,column=1,padx=10,pady=5)
 
         cphone_label= Label(F1,text="Phone Number",bg=bg_color,fg="white",font=("times new roman",18,"bold")).grid(row=0,column=2,padx=20,pady=5)
-        cphone_txt = Entry(F1,width=15,textvariable=self.cphone,font="arial 15",bd=7,relief=SUNKEN).grid(row=0,column=3,padx=10,pady=5)
+        cphone_txt = Entry(F1,width=15,textvariable=self.c_phon,font="arial 15",bd=7,relief=SUNKEN).grid(row=0,column=3,padx=10,pady=5)
 
         c_bill_label= Label(F1,text="Bill Number",bg=bg_color,fg="white",font=("times new roman",18,"bold")).grid(row=0,column=4,padx=20,pady=5)
         c_bill_txt = Entry(F1,width=15,textvariable=self.search_bill,font="arial 15",bd=7,relief=SUNKEN).grid(row=0,column=5,padx=10,pady=5)
@@ -144,11 +160,21 @@ class Bill_App:
         btn_F=Frame(F6,bd=7,relief=GROOVE,bg=bg_color)
         btn_F.place(x=750,width=580,height=105)
 
-        total_btn=Button(btn_F,text="Total",bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=0,padx=8,pady=5)
+        total_btn=Button(btn_F,command=self.total,text="Total",bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=0,padx=8,pady=5)
         Gbill_btn=Button(btn_F,text="Generate bill",bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=1,padx=5,pady=5)
         Clear_btn=Button(btn_F,text="Clear",bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=2,padx=5,pady=5)
         Exit_btn=Button(btn_F,text="Exit",bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=3,padx=5,pady=5)
 
+        def total(self):
+            self.total_cosmetic_price=(
+                (self.soap.get()*40)+
+                (self.face_cream.get()*120)+
+                (self.face_wash.get()*60)+
+                (self.spray.get()*180)+
+                (self.gell.get()*140)+
+                (self.lotion.get()*180)
+            )
+            self.cosmetic_price.set(str(self.total_cosmetic_price))
 root = Tk()
 obj = Bill_App(root)
 

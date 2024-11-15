@@ -2,7 +2,6 @@ from tkinter import *
 
 class Bill_App:
     def __init__(self,root):
-        self.total = 0
         self.root = root
         self.root.geometry("1350x700+0+0")
         self.root.title("Billing Software")
@@ -167,7 +166,7 @@ class Bill_App:
         Exit_btn=Button(btn_F,text="Exit",bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=3,padx=5,pady=5)
 
     def total(self):
-        self.total_cosmetic_price=(
+        self.total_cosmetic_price=float(
                                     (self.soap.get()*40)+
                                     (self.face_cream.get()*120)+
                                     (self.face_wash.get()*60)+

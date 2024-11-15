@@ -2,6 +2,7 @@ from tkinter import *
 
 class Bill_App:
     def __init__(self,root):
+        self.total = None
         self.root = root
         self.root.geometry("1350x700+0+0")
         self.root.title("Billing Software")

@@ -1,5 +1,6 @@
 from collections.abc import Buffer
 from tkinter import *
+import math,random
 
 class Bill_App:
     def __init__(self,root):
@@ -44,6 +45,8 @@ class Bill_App:
         self.c_name=StringVar()
         self.c_phon=StringVar()
         self.bill_no=StringVar()
+        x=random.randint(1000,9999)
+        self.bill_no.set(str(x))
         self.search_bill=StringVar()
 
         F1= LabelFrame(self.root, bd=10,relief=GROOVE,text="Customer Details", font=("times new roman",15,"bold"),fg="gold",bg=bg_color)
@@ -162,9 +165,11 @@ class Bill_App:
         btn_F.place(x=750,width=580,height=105)
 
         total_btn=Button(btn_F,command=self.total,text="Total",bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=0,padx=8,pady=5)
-        Gbill_btn=Button(btn_F,text="Generate bill",bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=1,padx=5,pady=5)
+        Gbill_btn=Button(btn_F,text="Generate bill",command=self.welcome_bill(),bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=1,padx=5,pady=5)
         Clear_btn=Button(btn_F,text="Clear",bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=2,padx=5,pady=5)
         Exit_btn=Button(btn_F,text="Exit",bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=3,padx=5,pady=5)
+
+        self.welcome_bill()
 
     def total(self):
         self.total_cosmetic_price=float(
@@ -199,6 +204,19 @@ class Bill_App:
                                      )
         self.cold_drink_price.set("Rs. "+str(self.total_drink_price))
         self.cold_drink_tax.set("Rs. " + str(round(self.total_drink_price * 0.05, 2)))
+
+    def welcome_bill(self):
+        self.textarea.insert(END,"\tWelcome SneekPeek Retail ")
+        self.textarea.insert(END,f"\nBill Number :  {self.bill_no.get()}")
+        self.textarea.insert(END,f"\nCustomer Name : {self.c_name.get()}")
+        self.textarea.insert(END,f"\nPhone Number : {self.c_phon.get()}")
+
+
+    def bill_area(self):
+        pass
+
+
+
 
 root = Tk()
 obj = Bill_App(root)

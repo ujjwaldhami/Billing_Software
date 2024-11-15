@@ -168,13 +168,37 @@ class Bill_App:
     def total(self):
         self.total_cosmetic_price=float(
                                     (self.soap.get()*40)+
-                                    (self.face_cream.get()*120)+
-                                    (self.face_wash.get()*60)+
-                                    (self.spray.get()*180)+
-                                    (self.gell.get()*140)+
-                                    (self.lotion.get()*180)
+                                    (self.face_cream.get()*150)+
+                                    (self.face_wash.get()*240)+
+                                    (self.spray.get()*220)+
+                                    (self.gell.get()*120)+
+                                    (self.lotion.get()*200)
                                     )
-        self.cosmetic_price.set(str(self.total_cosmetic_price))
+        self.cosmetic_price.set("Rs. "+str(self.total_cosmetic_price))
+        self.cosmetic_tax.set("Rs. "+str(round(self.total_cosmetic_price*0.05),2))
+
+        self.total_grocery_price = float(
+                                     (self.rice.get() * 100) +
+                                     (self.food_oil.get() * 110) +
+                                     (self.daal.get() * 50) +
+                                     (self.wheat.get() * 300) +
+                                     (self.sugar.get() * 42) +
+                                     (self.tea.get() * 150)
+                                     )
+        self.grocery_price.set("Rs. "+str(self.total_grocery_price))
+        self.grocery_tax.set("Rs. "+str(round(self.total_grocery_price * 0.05),2))
+
+        self.total_drink_price = float(
+                                     (self.tea.get() * 15) +
+                                     (self.coffee.get() * 25) +
+                                     (self.cold_drink.get() * 95) +
+                                     (self.milk.get() * 29) +
+                                     (self.lassi.get() * 40) +
+                                     (self.juice.get() * 110)
+                                     )
+        self.cold_drink_price.set("Rs. "+str(self.total_drink_price))
+        self.cold_drink_tax.set("Rs. "+str(round(self.total_drink_price * 0.05),2))
+
 root = Tk()
 obj = Bill_App(root)
 

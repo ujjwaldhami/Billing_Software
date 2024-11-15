@@ -2,7 +2,7 @@ from tkinter import *
 
 class Bill_App:
     def __init__(self,root):
-        self.total = None
+        self.total = 0
         self.root = root
         self.root.geometry("1350x700+0+0")
         self.root.title("Billing Software")
@@ -166,16 +166,16 @@ class Bill_App:
         Clear_btn=Button(btn_F,text="Clear",bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=2,padx=5,pady=5)
         Exit_btn=Button(btn_F,text="Exit",bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=3,padx=5,pady=5)
 
-        def total(self):
-            self.total_cosmetic_price=(
-                (self.soap.get()*40)+
-                (self.face_cream.get()*120)+
-                (self.face_wash.get()*60)+
-                (self.spray.get()*180)+
-                (self.gell.get()*140)+
-                (self.lotion.get()*180)
-            )
-            self.cosmetic_price.set(str(self.total_cosmetic_price))
+    def total(self):
+        self.total_cosmetic_price=(
+                                    (self.soap.get()*40)+
+                                    (self.face_cream.get()*120)+
+                                    (self.face_wash.get()*60)+
+                                    (self.spray.get()*180)+
+                                    (self.gell.get()*140)+
+                                    (self.lotion.get()*180)
+                                    )
+        self.cosmetic_price.set(str(self.total_cosmetic_price))
 root = Tk()
 obj = Bill_App(root)
 

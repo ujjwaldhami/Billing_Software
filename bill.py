@@ -1,3 +1,4 @@
+from collections.abc import Buffer
 from tkinter import *
 
 class Bill_App:
@@ -175,7 +176,7 @@ class Bill_App:
                                     (self.lotion.get()*200)
                                     )
         self.cosmetic_price.set("Rs. "+str(self.total_cosmetic_price))
-        self.cosmetic_tax.set("Rs. "+str(round(self.total_cosmetic_price*0.05),2))
+        self.cosmetic_tax.set("Rs. " + str(round(self.total_cosmetic_price * 0.05, 2)))
 
         self.total_grocery_price = float(
                                      (self.rice.get() * 100) +
@@ -186,7 +187,7 @@ class Bill_App:
                                      (self.tea.get() * 150)
                                      )
         self.grocery_price.set("Rs. "+str(self.total_grocery_price))
-        self.grocery_tax.set("Rs. "+str(round(self.total_grocery_price * 0.05),2))
+        self.grocery_tax.set("Rs. " + str(round(self.total_grocery_price * 0.1, 2)))
 
         self.total_drink_price = float(
                                      (self.tea.get() * 15) +
@@ -197,7 +198,7 @@ class Bill_App:
                                      (self.juice.get() * 110)
                                      )
         self.cold_drink_price.set("Rs. "+str(self.total_drink_price))
-        self.cold_drink_tax.set("Rs. "+str(round(self.total_drink_price * 0.05),2))
+        self.cold_drink_tax.set("Rs. " + str(round(self.total_drink_price * 0.05, 2)))
 
 root = Tk()
 obj = Bill_App(root)

@@ -166,7 +166,7 @@ class Bill_App:
         btn_F.place(x=750,width=580,height=105)
 
         total_btn=Button(btn_F,command=self.total,text="Total",bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=0,padx=8,pady=5)
-        Gbill_btn=Button(btn_F,text="Generate bill",command=self.welcome_bill,bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=1,padx=5,pady=5)
+        Gbill_btn=Button(btn_F,text="Generate bill",command=self.bill_area,bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=1,padx=5,pady=5)
         Clear_btn=Button(btn_F,text="Clear",bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=2,padx=5,pady=5)
         Exit_btn=Button(btn_F,text="Exit",bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=3,padx=5,pady=5)
 
@@ -246,8 +246,25 @@ class Bill_App:
 
     def bill_area(self):
         self.welcome_bill()
+        #======Cosmetics=======#
         if self.soap.get()!=0:
-            self.textarea.insert(END, f"\n Bath Soap\t\t{self.soap.get()}\t\t")
+            self.textarea.insert(END, f"\n Bath Soap\t\t{self.soap.get()}\t\t{self.c_s_p}")
+
+        if self.face_cream.get() != 0:
+            self.textarea.insert(END, f"\n Face Cream\t\t{self.face_cream.get()}\t\t{self.f_c_p}")
+
+        if self.face_wash.get() != 0:
+            self.textarea.insert(END, f"\n Face Wash\t\t{self.face_wash.get()}\t\t{self.f_w_p}")
+
+        if self.spray.get() != 0:
+            self.textarea.insert(END, f"\n Spray\t\t{self.spray.get()}\t\t{self.s_p}")
+
+        if self.gell.get() != 0:
+            self.textarea.insert(END, f"\n Gell\t\t{self.gell.get()}\t\t{self.g_p}")
+
+        if self.lotion.get() != 0:
+            self.textarea.insert(END, f"\n Lotion\t\t{self.lotion.get()}\t\t{self.l_p}")
+
 
 
 

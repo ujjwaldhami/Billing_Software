@@ -10,6 +10,7 @@ class Bill_App:
         bg_color = "#074463"
         title = Label(self.root , text = "Billing Software",bd= 12,relief = GROOVE,bg=bg_color,fg= "white",font = ("times new roman",30,"bold"),pady = 2).pack(fill=X)
 
+
         self.soap = IntVar()
         self.face_cream = IntVar()
         self.face_wash = IntVar()
@@ -206,7 +207,7 @@ class Bill_App:
         self.cold_drink_tax.set("Rs. " + str(round(self.total_drink_price * 0.05, 2)))
 
     def welcome_bill(self):
-        self.textarea.insert(END,"\tWelcome SneekPeek Retail ")
+        self.textarea.insert(END,"\tWelcome to Retail ")
         self.textarea.insert(END,f"\nBill Number :  {self.bill_no.get()}")
         self.textarea.insert(END,f"\nCustomer Name : {self.c_name.get()}")
         self.textarea.insert(END,f"\nPhone Number : {self.c_phon.get()}")

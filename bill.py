@@ -173,35 +173,63 @@ class Bill_App:
         self.welcome_bill()
 
     def total(self):
+        #=============Single Cosmetic product price calculate===========#
+        self.c_s_p=self.soap.get()*40
+        self.f_c_p=self.face_cream.get()*150
+        self.f_w_p=self.face_wash.get()*240
+        self.s_p=self.spray.get()*220
+        self.g_p=self.gell.get()*120
+        self.l_p=self.lotion.get()*200
+
+        #=============Total of Cosmetic================#
         self.total_cosmetic_price=float(
-                                    (self.soap.get()*40)+
-                                    (self.face_cream.get()*150)+
-                                    (self.face_wash.get()*240)+
-                                    (self.spray.get()*220)+
-                                    (self.gell.get()*120)+
-                                    (self.lotion.get()*200)
+                                    self.c_s_p+
+                                    self.f_c_p+
+                                    self.f_w_p+
+                                    self.s_p+
+                                    self.g_p+
+                                    self.l_p
                                     )
         self.cosmetic_price.set("Rs. "+str(self.total_cosmetic_price))
         self.cosmetic_tax.set("Rs. " + str(round(self.total_cosmetic_price * 0.05, 2)))
 
+        #=============Single grocery product price calculate===========#
+        self.r_p=self.rice.get() * 100
+        self.f_o_p=self.food_oil.get() * 110
+        self.d_p=self.daal.get() * 50
+        self.w_p=self.wheat.get() * 300
+        self.s_p=self.sugar.get() * 42
+        self.t_p=self.tea.get() * 150
+
+        #=============Total of grocery================#
         self.total_grocery_price = float(
-                                     (self.rice.get() * 100) +
-                                     (self.food_oil.get() * 110) +
-                                     (self.daal.get() * 50) +
-                                     (self.wheat.get() * 300) +
-                                     (self.sugar.get() * 42) +
-                                     (self.tea.get() * 150)
+                                     self.r_p +
+                                     self.f_o_p+
+                                     self.d_p+
+                                     self.w_p +
+                                     self.s_p +
+                                     self.t_p
                                      )
         self.grocery_price.set("Rs. "+str(self.total_grocery_price))
         self.grocery_tax.set("Rs. " + str(round(self.total_grocery_price * 0.1, 2)))
 
+        #=============Single drink product price calculate===========#
+        self.t_p_p=self.tea.get()*15
+        self.c_p=self.coffee.get()*25
+        self.c_d_p=self.cold_drink.get()*95
+        self.m_p=self.milk.get()*29
+        self.l_p=self.lassi.get()*40
+        self.j_p=self.juice.get()*110
+
+        #=============Total of Drink================#
+
         self.total_drink_price = float(
-                                     (self.tea.get() * 15) +
-                                     (self.coffee.get() * 25) +
-                                     (self.cold_drink.get() * 95) +
-                                     (self.milk.get() * 29) +
-                                     (self.lassi.get() * 40) +
-                                     (self.juice.get() * 110)
+                                     self.t_p_p +
+                                     self.c_p +
+                                     self.c_d_p+
+                                     self.m_p +
+                                     self.l_p +
+                                     self.j_p
                                      )
         self.cold_drink_price.set("Rs. "+str(self.total_drink_price))
         self.cold_drink_tax.set("Rs. " + str(round(self.total_drink_price * 0.05, 2)))
@@ -217,7 +245,11 @@ class Bill_App:
         self.textarea.insert(END,f"\n=====================================")
 
     def bill_area(self):
-        pass
+        self.welcome_bill()
+        if self.soap.get()!=0:
+            self.textarea.insert(END, f"\n Bath Soap\t\t{self.soap.get()}\t\t")
+
+
 
 
 

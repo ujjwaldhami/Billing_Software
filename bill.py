@@ -266,6 +266,24 @@ class Bill_App:
             self.textarea.insert(END, f"\n Lotion\t\t{self.lotion.get()}\t\t{self.l_p}")
 
 
+        # ======Grocery=======#
+        if self.rice.get() != 0:
+            self.textarea.insert(END, f"\n Rice\t\t{self.rice.get()}\t\t{self.r_p}")
+
+        if self.food_oil.get() != 0:
+            self.textarea.insert(END, f"\n Food Oil\t\t{self.food_oil.get()}\t\t{self.f_o_p}")
+
+        if (self.daal.get() != 0):
+            self.textarea.insert(END, f"\n Daal\t\t{self.daal.get()}\t\t{self.d_p}")
+
+        if self.wheat.get() != 0:
+            self.textarea.insert(END, f"\n Wheat\t\t{self.wheat.get()}\t\t{self.w_p}")
+
+        if self.sugar.get() != 0:
+            self.textarea.insert(END, f"\n Sugar\t\t{self.sugar.get()}\t\t{self.s_u_p}")
+
+        if self.tea.get() != 0:
+            self.textarea.insert(END, f"\n Tea\t\t{self.tea.get()}\t\t{self.t_p}")
 
 
 

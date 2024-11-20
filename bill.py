@@ -166,7 +166,7 @@ class Bill_App:
         btn_F.place(x=750,width=580,height=105)
 
         total_btn=Button(btn_F,command=self.total,text="Total",bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=0,padx=8,pady=5)
-        Gbill_btn=Button(btn_F,text="Generate bill",command=self.welcome_bill(),bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=1,padx=5,pady=5)
+        Gbill_btn=Button(btn_F,text="Generate bill",command=self.welcome_bill,bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=1,padx=5,pady=5)
         Clear_btn=Button(btn_F,text="Clear",bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=2,padx=5,pady=5)
         Exit_btn=Button(btn_F,text="Exit",bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=3,padx=5,pady=5)
 
@@ -207,6 +207,7 @@ class Bill_App:
         self.cold_drink_tax.set("Rs. " + str(round(self.total_drink_price * 0.05, 2)))
 
     def welcome_bill(self):
+        self.textarea.delete('1.0',END)
         self.textarea.insert(END,"\tWelcome to Retail ")
         self.textarea.insert(END,f"\nBill Number :  {self.bill_no.get()}")
         self.textarea.insert(END,f"\nCustomer Name : {self.c_name.get()}")
@@ -221,5 +222,4 @@ class Bill_App:
 
 root = Tk()
 obj = Bill_App(root)
-
 root.mainloop()

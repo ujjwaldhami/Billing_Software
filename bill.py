@@ -198,7 +198,7 @@ class Bill_App:
         self.f_o_p=self.food_oil.get() * 110
         self.d_p=self.daal.get() * 50
         self.w_p=self.wheat.get() * 300
-        self.s_p=self.sugar.get() * 42
+        self.s_u_p=self.sugar.get() * 42
         self.t_p=self.tea.get() * 150
 
         #=============Total of grocery================#
@@ -207,7 +207,7 @@ class Bill_App:
                                      self.f_o_p+
                                      self.d_p+
                                      self.w_p +
-                                     self.s_p +
+                                     self.s_u_p +
                                      self.t_p
                                      )
         self.grocery_price.set("Rs. "+str(self.total_grocery_price))
@@ -218,7 +218,7 @@ class Bill_App:
         self.c_p=self.coffee.get()*25
         self.c_d_p=self.cold_drink.get()*95
         self.m_p=self.milk.get()*29
-        self.l_p=self.lassi.get()*40
+        self.l_s_p=self.lassi.get()*40
         self.j_p=self.juice.get()*110
 
         #=============Total of Drink================#
@@ -228,7 +228,7 @@ class Bill_App:
                                      self.c_p +
                                      self.c_d_p+
                                      self.m_p +
-                                     self.l_p +
+                                     self.l_s_p +
                                      self.j_p
                                      )
         self.cold_drink_price.set("Rs. "+str(self.total_drink_price))

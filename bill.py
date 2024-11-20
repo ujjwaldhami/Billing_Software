@@ -208,11 +208,13 @@ class Bill_App:
 
     def welcome_bill(self):
         self.textarea.delete('1.0',END)
-        self.textarea.insert(END,"\tWelcome to Retail ")
+        self.textarea.insert(END,"\tWelcome to Retail\n")
         self.textarea.insert(END,f"\nBill Number :  {self.bill_no.get()}")
         self.textarea.insert(END,f"\nCustomer Name : {self.c_name.get()}")
         self.textarea.insert(END,f"\nPhone Number : {self.c_phon.get()}")
-
+        self.textarea.insert(END,f"\n=====================================")
+        self.textarea.insert(END,f"\n Products\t\tQTY\t\tPrice")
+        self.textarea.insert(END,f"\n=====================================")
 
     def bill_area(self):
         pass

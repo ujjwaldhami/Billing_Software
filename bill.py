@@ -237,7 +237,13 @@ class Bill_App:
         self.d_tax=round((self.total_drink_price * 0.05), 2)
         self.cold_drink_tax.set("Rs. " + str(self.d_tax))
 
-        self.Total_bill=self.cosmetic_price.get
+        self.Total_bill=float(   self.total_cosmetic_price+
+                                 self.total_grocery_price+
+                                 self.total_drink_price+
+                                 self.c_tax+
+                                 self.g_tax+
+                                 self.d_tax
+                              )
 
     def welcome_bill(self):
         self.textarea.delete('1.0',END)
@@ -300,6 +306,9 @@ class Bill_App:
 
         if self.cold_drink_tax.get()!="Rs. 0.0":
             self.textarea.insert(END, f"\n Drinks Tax\t\t\t{self.cold_drink_tax.get()}")
+
+        self.textarea.insert(END, f"\n TOTAL BILL : \t\t\t{self.Total_bill}")
+        
 
         self.textarea.insert(END,f"\n-------------------------------------")
 

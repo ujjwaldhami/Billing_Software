@@ -285,6 +285,12 @@ class Bill_App:
         if self.tea.get() != 0:
             self.textarea.insert(END, f"\n Tea\t\t{self.tea.get()}\t\t{self.t_p}")
 
+        self.textarea.insert(END,f"\n-------------------------------------")
+        if self.cosmetic_tax.get()!="0.0":
+            self.textarea.insert(END, f"\n Cosmetic Tax\t\t\t{self.cosmetic_tax.get()}")
+        self.textarea.insert(END,f"\n-------------------------------------")
+
+
 
 
 

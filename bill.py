@@ -191,7 +191,8 @@ class Bill_App:
                                     self.l_p
                                     )
         self.cosmetic_price.set("Rs. "+str(self.total_cosmetic_price))
-        self.cosmetic_tax.set("Rs. " + str(round(self.total_cosmetic_price * 0.05, 2)))
+        self.c_tax=round((self.total_cosmetic_price * 0.05), 2)
+        self.cosmetic_tax.set("Rs. " + str(self.c_tax))
 
         #=============Single grocery product price calculate===========#
         self.r_p=self.rice.get() * 100
@@ -211,7 +212,8 @@ class Bill_App:
                                      self.t_p
                                      )
         self.grocery_price.set("Rs. "+str(self.total_grocery_price))
-        self.grocery_tax.set("Rs. " + str(round(self.total_grocery_price * 0.1, 2)))
+        self.g_tax=round((self.total_grocery_price * 0.1), 2)
+        self.grocery_tax.set("Rs. " + str(self.g_tax))
 
         #=============Single drink product price calculate===========#
         self.t_p_p=self.tea.get()*15
@@ -232,7 +234,10 @@ class Bill_App:
                                      self.j_p
                                      )
         self.cold_drink_price.set("Rs. "+str(self.total_drink_price))
-        self.cold_drink_tax.set("Rs. " + str(round(self.total_drink_price * 0.05, 2)))
+        self.d_tax=round((self.total_drink_price * 0.05), 2)
+        self.cold_drink_tax.set("Rs. " + str(self.d_tax))
+
+        self.Total_bill=self.cosmetic_price.get
 
     def welcome_bill(self):
         self.textarea.delete('1.0',END)
@@ -286,8 +291,16 @@ class Bill_App:
             self.textarea.insert(END, f"\n Tea\t\t{self.tea.get()}\t\t{self.t_p}")
 
         self.textarea.insert(END,f"\n-------------------------------------")
+
         if self.cosmetic_tax.get()!="Rs. 0.0":
             self.textarea.insert(END, f"\n Cosmetic Tax\t\t\t{self.cosmetic_tax.get()}")
+
+        if self.grocery_tax.get()!="Rs. 0.0":
+            self.textarea.insert(END, f"\n Grocery Tax\t\t\t{self.grocery_tax.get()}")
+
+        if self.cold_drink_tax.get()!="Rs. 0.0":
+            self.textarea.insert(END, f"\n Drinks Tax\t\t\t{self.cold_drink_tax.get()}")
+
         self.textarea.insert(END,f"\n-------------------------------------")
 
 

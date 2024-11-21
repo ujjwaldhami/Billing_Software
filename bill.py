@@ -308,7 +308,7 @@ class Bill_App:
             self.textarea.insert(END, f"\n Drinks Tax\t\t\t{self.cold_drink_tax.get()}")
 
         self.textarea.insert(END, f"\n TOTAL BILL : \t\t\t{self.Total_bill}")
-        
+
 
         self.textarea.insert(END,f"\n-------------------------------------")
 

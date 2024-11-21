@@ -1,6 +1,7 @@
 from collections.abc import Buffer
 from tkinter import *
 import math,random
+from tkinter import messagebox
 
 class Bill_App:
     def __init__(self,root):
@@ -256,61 +257,66 @@ class Bill_App:
         self.textarea.insert(END,f"\n=====================================")
 
     def bill_area(self):
-        self.welcome_bill()
-        #======Cosmetics=======#
-        if self.soap.get()!=0:
-            self.textarea.insert(END, f"\n Bath Soap\t\t{self.soap.get()}\t\t{self.c_s_p}")
+        if self.c_name.get()=="" or self.c_phon.get()=="":
+            messagebox.showerror("Error","Customer Details Invalid")
+        elif self.cosmetic_price.get()=="Rs . 0.0" and self.grocery_price.get()=="Rs . 0.0" and self.cold_drink_price.get()=="Rs . 0.0":
+            messagebox.showerror("Error", "No Product Purchased")
+        else:
+            self.welcome_bill()
+            #======Cosmetics=======#
+            if self.soap.get()!=0:
+                self.textarea.insert(END, f"\n Bath Soap\t\t{self.soap.get()}\t\t{self.c_s_p}")
 
-        if self.face_cream.get() != 0:
-            self.textarea.insert(END, f"\n Face Cream\t\t{self.face_cream.get()}\t\t{self.f_c_p}")
+            if self.face_cream.get() != 0:
+                self.textarea.insert(END, f"\n Face Cream\t\t{self.face_cream.get()}\t\t{self.f_c_p}")
 
-        if self.face_wash.get() != 0:
-            self.textarea.insert(END, f"\n Face Wash\t\t{self.face_wash.get()}\t\t{self.f_w_p}")
+            if self.face_wash.get() != 0:
+                self.textarea.insert(END, f"\n Face Wash\t\t{self.face_wash.get()}\t\t{self.f_w_p}")
 
-        if self.spray.get() != 0:
-            self.textarea.insert(END, f"\n Spray\t\t{self.spray.get()}\t\t{self.s_p}")
+            if self.spray.get() != 0:
+                self.textarea.insert(END, f"\n Spray\t\t{self.spray.get()}\t\t{self.s_p}")
 
-        if self.gell.get() != 0:
-            self.textarea.insert(END, f"\n Gell\t\t{self.gell.get()}\t\t{self.g_p}")
+            if self.gell.get() != 0:
+                self.textarea.insert(END, f"\n Gell\t\t{self.gell.get()}\t\t{self.g_p}")
 
-        if self.lotion.get() != 0:
-            self.textarea.insert(END, f"\n Lotion\t\t{self.lotion.get()}\t\t{self.l_p}")
-
-
-        # ======Grocery=======#
-        if self.rice.get() != 0:
-            self.textarea.insert(END, f"\n Rice\t\t{self.rice.get()}\t\t{self.r_p}")
-
-        if self.food_oil.get() != 0:
-            self.textarea.insert(END, f"\n Food Oil\t\t{self.food_oil.get()}\t\t{self.f_o_p}")
-
-        if (self.daal.get() != 0):
-            self.textarea.insert(END, f"\n Daal\t\t{self.daal.get()}\t\t{self.d_p}")
-
-        if self.wheat.get() != 0:
-            self.textarea.insert(END, f"\n Wheat\t\t{self.wheat.get()}\t\t{self.w_p}")
-
-        if self.sugar.get() != 0:
-            self.textarea.insert(END, f"\n Sugar\t\t{self.sugar.get()}\t\t{self.s_u_p}")
-
-        if self.tea.get() != 0:
-            self.textarea.insert(END, f"\n Tea\t\t{self.tea.get()}\t\t{self.t_p}")
-
-        self.textarea.insert(END,f"\n-------------------------------------")
-
-        if self.cosmetic_tax.get()!="Rs. 0.0":
-            self.textarea.insert(END, f"\n Cosmetic Tax\t\t\t{self.cosmetic_tax.get()}")
-
-        if self.grocery_tax.get()!="Rs. 0.0":
-            self.textarea.insert(END, f"\n Grocery Tax\t\t\t{self.grocery_tax.get()}")
-
-        if self.cold_drink_tax.get()!="Rs. 0.0":
-            self.textarea.insert(END, f"\n Drinks Tax\t\t\t{self.cold_drink_tax.get()}")
-
-        self.textarea.insert(END, f"\n TOTAL BILL : \t\t\t Rs. {self.Total_bill}")
+            if self.lotion.get() != 0:
+                self.textarea.insert(END, f"\n Lotion\t\t{self.lotion.get()}\t\t{self.l_p}")
 
 
-        self.textarea.insert(END,f"\n-------------------------------------")
+            # ======Grocery=======#
+            if self.rice.get() != 0:
+                self.textarea.insert(END, f"\n Rice\t\t{self.rice.get()}\t\t{self.r_p}")
+
+            if self.food_oil.get() != 0:
+                self.textarea.insert(END, f"\n Food Oil\t\t{self.food_oil.get()}\t\t{self.f_o_p}")
+
+            if (self.daal.get() != 0):
+                self.textarea.insert(END, f"\n Daal\t\t{self.daal.get()}\t\t{self.d_p}")
+
+            if self.wheat.get() != 0:
+                self.textarea.insert(END, f"\n Wheat\t\t{self.wheat.get()}\t\t{self.w_p}")
+
+            if self.sugar.get() != 0:
+                self.textarea.insert(END, f"\n Sugar\t\t{self.sugar.get()}\t\t{self.s_u_p}")
+
+            if self.tea.get() != 0:
+                self.textarea.insert(END, f"\n Tea\t\t{self.tea.get()}\t\t{self.t_p}")
+
+            self.textarea.insert(END,f"\n-------------------------------------")
+
+            if self.cosmetic_tax.get()!="Rs. 0.0":
+                self.textarea.insert(END, f"\n Cosmetic Tax\t\t\t{self.cosmetic_tax.get()}")
+
+            if self.grocery_tax.get()!="Rs. 0.0":
+                self.textarea.insert(END, f"\n Grocery Tax\t\t\t{self.grocery_tax.get()}")
+
+            if self.cold_drink_tax.get()!="Rs. 0.0":
+                self.textarea.insert(END, f"\n Drinks Tax\t\t\t{self.cold_drink_tax.get()}")
+
+            self.textarea.insert(END, f"\n TOTAL BILL : \t\t\t Rs. {self.Total_bill}")
+
+
+            self.textarea.insert(END,f"\n-------------------------------------")
 
 
 

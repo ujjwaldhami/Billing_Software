@@ -330,7 +330,7 @@ class Bill_App:
             return
 
     def find_bill(self):
-        for i in os.listdir("bill/"):
+        for i in os.listdir("bills/"):
             print(i)
 
 

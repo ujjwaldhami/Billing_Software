@@ -329,6 +329,10 @@ class Bill_App:
         else:
             return
 
+    def find_bill(self):
+        for i in os.listdir("bill/"):
+            print(i)
+
 
 root = Tk()
 obj = Bill_App(root)

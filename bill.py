@@ -63,7 +63,7 @@ class Bill_App:
         c_bill_label= Label(F1,text="Bill Number",bg=bg_color,fg="white",font=("times new roman",18,"bold")).grid(row=0,column=4,padx=20,pady=5)
         c_bill_txt = Entry(F1,width=15,textvariable=self.search_bill,font="arial 15",bd=7,relief=SUNKEN).grid(row=0,column=5,padx=10,pady=5)
 
-        bill_btn = Button(F1,text="Search",width=10,bd=7,font="arial 12 bold").grid(row=0,column=6,pady=10,padx=15)
+        bill_btn = Button(F1,text="Search",command=self.find_bill,width=10,bd=7,font="arial 12 bold").grid(row=0,column=6,pady=10,padx=15)
 
         F2 = LabelFrame(self.root,bd=10,relief=GROOVE,text="Cosmetics", font=("times new roman",15,"bold"),fg="gold",bg=bg_color)
         F2.place(x=5,y=180,width=325,height=380)
@@ -168,8 +168,8 @@ class Bill_App:
 
         total_btn=Button(btn_F,command=self.total,text="Total",bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=0,padx=8,pady=5)
         Gbill_btn=Button(btn_F,text="Generate bill",command=self.bill_area,bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=1,padx=5,pady=5)
-        Clear_btn=Button(btn_F,text="Clear",bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=2,padx=5,pady=5)
-        Exit_btn=Button(btn_F,text="Exit",bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=3,padx=5,pady=5)
+        Clear_btn=Button(btn_F,text="Clear",command=self.clear_data,bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=2,padx=5,pady=5)
+        Exit_btn=Button(btn_F,text="Exit",command=self.exit_app,bg="grey",font="arial 12 bold",bd=5,width=11,fg="black",pady=15).grid(row=0,column=3,padx=5,pady=5)
 
         self.welcome_bill()
 
@@ -322,7 +322,7 @@ class Bill_App:
         op=messagebox.askyesno("Save Bill","Do you want to save the bill?")
         if op>0:
             self.bill_data = self.textarea.get('1.0',END)
-            f1 = open("bills/"+str(self.bill_no.get())+".txt","w")
+            f1=open("bills/"+str(self.bill_no.get())+".txt","w")
             f1.write(self.bill_data)
             f1.close()
             messagebox.showinfo("Saved",f"Bill no. : {self.bill_no.get()} saved successfully")
@@ -330,8 +330,71 @@ class Bill_App:
             return
 
     def find_bill(self):
+        present = "no"
         for i in os.listdir("bills/"):
-            print(i)
+            if i.split('.')[0]==self.search_bill.get():
+                f1=open(f"bills/{i}","r")
+                self.textarea.delete('1.0',END)
+                for d in f1:
+                    self.textarea.insert(END,d)
+                f1.close()
+                present="yes"
+
+        if present=="no":
+            messagebox.showerror("Error","Invalid Bill number!")
+
+    def clear_data(self):
+
+        op=messagebox.askyesno("Clear","Do you want to clear?")
+        if op>0:
+            self.soap.set(0)
+            self.face_cream.set(0)
+            self.face_wash.set(0)
+            self.spray.set(0)
+            self.gell.set(0)
+            self.lotion.set(0)
+
+            self.rice.set(0)
+            self.food_oil.set(0)
+            self.daal.set(0)
+            self.wheat.set(0)
+            self.sugar.set(0)
+            self.tea_leaves.set(0)
+
+            self.tea.set(0)
+            self.coffee.set(0)
+            self.cold_drink.set(0)
+            self.milk.set(0)
+            self.lassi.set(0)
+            self.juice.set(0)
+
+
+            #=============Total Product price & tax Variable=========#
+            self.cosmetic_price.set("")
+            self.grocery_price.set("")
+            self.cold_drink_price.set("")
+
+            self.cosmetic_tax.set("")
+            self.grocery_tax.set("")
+            self.cold_drink_tax.set("")
+
+            #============Customer==========#
+            self.c_name.set("")
+            self.c_phon.set("")
+            self.bill_no.set("")
+            x=random.randint(1000,9999)
+
+            self.bill_no.set(str(x))
+
+            self.search_bill.set("")
+
+            self.welcome_bill()
+
+    def exit_app(self):
+        op=messagebox.askyesno("Exit","Do you want to exit?")
+        if op>0:
+            self.root.destroy()
+
 
 
 root = Tk()

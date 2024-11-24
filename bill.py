@@ -1,6 +1,6 @@
 from collections.abc import Buffer
 from tkinter import *
-import math,random
+import math,random,os
 from tkinter import messagebox
 
 class Bill_App:
@@ -314,13 +314,20 @@ class Bill_App:
                 self.textarea.insert(END, f"\n Drinks Tax\t\t\t{self.cold_drink_tax.get()}")
 
             self.textarea.insert(END, f"\n TOTAL BILL : \t\t\t Rs. {self.Total_bill}")
-
-
             self.textarea.insert(END,f"\n-------------------------------------")
 
+            self.save_bill()
 
-
-
+    def save_bill(self):
+        op=messagebox.askyesno("Save Bill","Do you want to save the bill?")
+        if op>0:
+            self.bill_data = self.textarea.get('1.0',END)
+            f1 = open("bills/"+str(self.bill_no.get())+".txt","w")
+            f1.write(self.bill_data)
+            f1.close()
+            messagebox.showinfo("Saved",f"Bill no. : {self.bill_no.get()} saved successfully")
+        else:
+            return
 
 
 root = Tk()
